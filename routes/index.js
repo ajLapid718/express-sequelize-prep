@@ -19,7 +19,13 @@ router.get("/tweets/:id", function(req, res, next) {
   let targetId = req.params.id;
   Tweet.findById(targetId).then(function(article) {
     res.json(article);
-  }).catch(err => console.log(err));  
-})
+  }).catch(err => console.log(err));
+});
+
+router.post("/tweets", function(req, res, next) {
+  Tweet.create(req.body).then(function(newTweet) {
+    res.status(201).json(newTweet);
+  });
+});
 
 module.exports = router;
