@@ -15,4 +15,11 @@ router.get("/tweets", function(req, res, next) {
   }
 });
 
+router.get("/tweets/:id", function(req, res, next) {
+  let targetId = req.params.id;
+  Tweet.findById(targetId).then(function(article) {
+    res.json(article);
+  }).catch(err => console.log(err));  
+})
+
 module.exports = router;
