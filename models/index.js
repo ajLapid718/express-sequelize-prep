@@ -4,7 +4,10 @@ var db = new Sequelize('postgres://localhost:5432/express_sequelize_review', { l
 var Tweet = db.define('tweet', {
   text: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      len: [0,140]
+    }
   }
 });
 
