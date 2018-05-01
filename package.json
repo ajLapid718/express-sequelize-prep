@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon -x 'mocha -R spec -t 1000 test/*.js || true'",
-    "db-init": "psql -f db-init.sql"
+    "test": "mocha -R spec -t 1000 test/*.js || true"
   },
   "keywords": [],
   "author": "",
