@@ -3,7 +3,8 @@ var db = new Sequelize('postgres://localhost:5432/express_sequelize_review', { l
 
 var Tweet = db.define('tweet', {
   text: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false
   }
 });
 
