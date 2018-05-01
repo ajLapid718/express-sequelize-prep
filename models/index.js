@@ -26,12 +26,13 @@ var Tweet = db.define('tweet', {
   }
 });
 
-// Tweet.findByHashtag = function(hashtag) {
-// }
-
-// Tweet.addTag = function() {
-//   return "hello";
-// };
+Tweet.findByHashtag = function(hashtag) {
+  return Tweet.findAll({where: {
+    text: {
+      $like: `%${hashtag}%`
+    }
+  }})
+}
 
 var User = db.define('user', {
   name: {
