@@ -9,6 +9,13 @@ var Tweet = db.define('tweet', {
       len: [0,140]
     }
   }
+}, {
+  getterMethods: {
+    hashtags: function() {
+      let tweetText = this.getDataValue('text');
+      return tweetText.match(/[#][A-Za-z]+/g);
+    }
+  }
 });
 
 var User = db.define('user', {
