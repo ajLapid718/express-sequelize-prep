@@ -13,10 +13,25 @@ var Tweet = db.define('tweet', {
   getterMethods: {
     hashtags: function() {
       let tweetText = this.getDataValue('text');
+      console.log("&&&", tweetText);
       return tweetText.match(/[#][A-Za-z]+/g);
+    }
+  }, instanceMethods: {
+    addTag: function(newTweet) {
+      let additionalHashtag = "#" + newTweet;
+      let officialNewTweet = this.getDataValue('text') + additionalHashtag;
+      this.setDataValue('text', officialNewTweet);
+      return this;
     }
   }
 });
+
+// Tweet.findByHashtag = function(hashtag) {
+// }
+
+// Tweet.addTag = function() {
+//   return "hello";
+// };
 
 var User = db.define('user', {
   name: {
