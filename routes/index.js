@@ -28,4 +28,15 @@ router.post("/tweets", function(req, res, next) {
   });
 });
 
+router.put("/tweets/:id", function(req, res, next) {
+  let targetId = req.params.id;
+  let newHashtag = req.body.hashtag;
+  Tweet.findById(targetId).then(function(tweet) {
+    tweet.addTag(newHashtag);
+    return tweet.save();
+  }).then(function(savedTweet) {
+    res.json(savedTweet);
+  })
+});
+
 module.exports = router;
